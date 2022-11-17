@@ -7,12 +7,17 @@ $.ajax ({
 	success: function (result) {
 		console.log(result);
 		console.log(result.name);
-
+		// Output the location
 		$("#location").text(result.name);
 
+		//Display the temperature
 		let F= Math.round(result.main.temp * (9/5) -459.67);
-		let Fahrenheit=F.toString();
-		$("#temperature").text(Fahrenheit);
+		let displayTemp=`Temperature: ${F}&#176;F`;
+		$("#temperature").html(displayTemp);
+
+		let windSpeed=Math.round(result.wind.speed/.44704);
+		let wind = windSpeed.toString();
+		$("#wind").text(wind);
 
 		$("#sky").text(result.weather[0].description);
 
